@@ -6,7 +6,7 @@ import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutline
 import { BACKEND } from "./libs/constants";
 
 interface Data {
-  id: number;
+  id?: number;
   description: string;
   checked: boolean;
 }
@@ -50,8 +50,7 @@ function ListComp({ data, checked, deleteData }: Prop) {
 }
 
 function App() {
-    console.log(BACKEND)
-  const [data, setData] = useState([
+  const [data, setData] = useState<Data[]>([
     { id: -1, description: "LOADING . . ", checked: true },
   ]);
 
@@ -81,7 +80,6 @@ function App() {
           checked: !data.find((item) => item.id === id)?.checked,
         });
       } catch (error) {
-        console.error("Error:", error);
       }
     }
 
